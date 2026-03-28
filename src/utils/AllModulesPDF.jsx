@@ -135,11 +135,13 @@ const styles = StyleSheet.create({
   table: { width: '100%', backgroundColor: '#ffffff', borderRadius: 8, padding: 8, borderWidth: 1, borderColor: '#e2e8f0' },
   tableRowHeader: { flexDirection: 'row', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#e2e8f0' },
   tableRow: { flexDirection: 'row', paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: '#f1f5f9', alignItems: 'center' },
-  col1: { width: '22%', paddingHorizontal: 4 },
-  col2: { width: '28%', paddingHorizontal: 4 },
-  col3: { width: '12%', paddingHorizontal: 4 },
-  col4: { width: '18%', paddingHorizontal: 4 },
-  col5: { width: '20%', paddingHorizontal: 4 },
+  col1: { width: '15%', paddingHorizontal: 4 },
+  col2: { width: '20%', paddingHorizontal: 4 },
+  col3: { width: '10%', paddingHorizontal: 4 },
+  col4: { width: '10%', paddingHorizontal: 4 },
+  col5: { width: '12%', paddingHorizontal: 4 },
+  col6: { width: '18%', paddingHorizontal: 4 },
+  col7: { width: '15%', paddingHorizontal: 4 },
   colTextHeader: { fontSize: 8, fontWeight: 'bold', color: '#475569' },
   colText: { fontSize: 8, color: '#1e293b' },
   colTextSuccess: { fontSize: 8, color: '#16a34a', fontWeight: 'bold' },
@@ -428,11 +430,13 @@ const AllModulesPDF = ({ modules, allData, logoPath }) => {
 
               <View style={styles.table}>
                 <View style={styles.tableRowHeader}>
-                  <Text style={[styles.col1, styles.colTextHeader]}>Project Details</Text>
-                  <Text style={[styles.col2, styles.colTextHeader]}>Objective</Text>
-                  <Text style={[styles.col3, styles.colTextHeader]}>Completion</Text>
-                  <Text style={[styles.col4, styles.colTextHeader]}>Status</Text>
-                  <Text style={[styles.col5, styles.colTextHeader]}>Timeline</Text>
+                  <Text style={[styles.col1, styles.colTextHeader]}>Task Stage</Text>
+                  <Text style={[styles.col2, styles.colTextHeader]}>Task Description</Text>
+                  <Text style={[styles.col3, styles.colTextHeader]}>Actual</Text>
+                  <Text style={[styles.col4, styles.colTextHeader]}>Delay</Text>
+                  <Text style={[styles.col5, styles.colTextHeader]}>Completion</Text>
+                  <Text style={[styles.col6, styles.colTextHeader]}>Status</Text>
+                  <Text style={[styles.col7, styles.colTextHeader]}>Timeline</Text>
                 </View>
 
                 {reports.length > 0 ? reports.map((report, idx) => (
@@ -442,16 +446,18 @@ const AllModulesPDF = ({ modules, allData, logoPath }) => {
                       <Text style={[styles.colText, { color: '#94a3b8', fontSize: 6 }]}>ID: #PR-00{report.id}</Text>
                     </View>
                     <Text style={[styles.col2, styles.colText]}>{String(report.taskDescription)}</Text>
-                    <Text style={[styles.col3, styles.colText]}>{String(report.progress)}%</Text>
+                    <Text style={[styles.col3, styles.colText]}>{String(report.actual || '-')}</Text>
+                    <Text style={[styles.col4, styles.colText]}>{String(report.delay || '-')}</Text>
+                    <Text style={[styles.col5, styles.colText]}>{String(report.progress)}%</Text>
                     <Text style={[
-                      styles.col4, 
+                      styles.col6, 
                       report.status === 'Completed' ? styles.colTextSuccess : 
                       report.status === 'In Progress' ? styles.colTextWarning : 
                       styles.colTextNeutral
                     ]}>
                       {String(report.status)}
                     </Text>
-                    <Text style={[styles.col5, styles.colText]}>{String(report.date || 'Mar 10')}</Text>
+                    <Text style={[styles.col7, styles.colText]}>{String(report.date || 'Mar 10')}</Text>
                   </View>
                 )) : (
                   <Text style={styles.emptyText}>No tasks found for this module.</Text>

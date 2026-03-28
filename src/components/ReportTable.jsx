@@ -8,8 +8,10 @@ const ReportTable = ({ data, tableId }) => {
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="border-b border-surface-50">
-              <th className="px-8 py-6 text-[11px] font-extrabold text-surface-400 uppercase tracking-[0.2em]">Project details</th>
-              <th className="px-8 py-6 text-[11px] font-extrabold text-surface-400 uppercase tracking-[0.2em]">Objective</th>
+              <th className="px-8 py-6 text-[11px] font-extrabold text-surface-400 uppercase tracking-[0.2em]">Task Stage</th>
+              <th className="px-8 py-6 text-[11px] font-extrabold text-surface-400 uppercase tracking-[0.2em]">Task Description</th>
+              <th className="px-8 py-6 text-[11px] font-extrabold text-surface-400 uppercase tracking-[0.2em]">Actual</th>
+              <th className="px-8 py-6 text-[11px] font-extrabold text-surface-400 uppercase tracking-[0.2em]">Delay</th>
               <th className="px-8 py-6 text-[11px] font-extrabold text-surface-400 uppercase tracking-[0.2em]">Completion</th>
               <th className="px-8 py-6 text-[11px] font-extrabold text-surface-400 uppercase tracking-[0.2em]">Status</th>
               <th className="px-8 py-6 text-[11px] font-extrabold text-surface-400 uppercase tracking-[0.2em]">Timeline</th>
@@ -32,6 +34,12 @@ const ReportTable = ({ data, tableId }) => {
                 </td>
                 <td className="px-8 py-6">
                   <p className="text-sm text-surface-600 font-medium max-w-[200px] line-clamp-1">{item.taskDescription}</p>
+                </td>
+                <td className="px-8 py-6">
+                  <p className="text-sm font-bold text-surface-900 leading-none">{item.actual || '-'}</p>
+                </td>
+                <td className="px-8 py-6">
+                  <p className="text-sm font-bold text-surface-900 leading-none">{item.delay || '-'}</p>
                 </td>
                 <td className="px-8 py-6">
                   <div className="flex flex-col gap-2 min-w-[120px]">
