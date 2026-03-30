@@ -33,7 +33,7 @@ const ReportTable = ({ data, tableId }) => {
                   </div>
                 </td>
                 <td className="px-8 py-6">
-                  <p className="text-sm text-surface-600 font-medium max-w-[200px] line-clamp-1">{item.taskDescription}</p>
+                  <p className="text-sm text-surface-600 font-medium whitespace-pre-wrap">{item.taskDescription}</p>
                 </td>
                 <td className="px-8 py-6">
                   <p className="text-sm font-bold text-surface-900 leading-none">{item.actual || '-'}</p>
